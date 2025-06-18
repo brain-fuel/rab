@@ -1,0 +1,35 @@
+clusterName: "dev01"
+version: "variable"
+
+restartConfig:
+  healthCheckInterval: 10
+  nodeStartupTimeout: 120
+  connectionDrainTimeout: 30
+  connectionDrainCheckInterval: 2
+  postRestartValidationTime: 15
+  interNodeDelay: 5
+
+nodes:
+  - id: "rabbit@rabbitmq-01"
+    name: "rabbitmq-01"
+    hostIp: 
+    port: 5671
+    managementPort: 15671
+    sshPort: 22
+    configOrder: 1          
+    
+  - id: "rabbit@rabbitmq-02"
+    name: "rabbitmq-02" 
+    hostIp: 
+    port: 5671
+    managementPort: 15671
+    sshPort: 22
+    configOrder: 2         
+    
+  - id: "rabbit@rabbitmq-03"
+    name: "rabbitmq-03"
+    hostIp: 
+    port: 5671
+    managementPort: 15671
+    sshPort: 22
+    configOrder: 3         
