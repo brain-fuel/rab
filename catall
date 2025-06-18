@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+find . -type f -print0 \
+  | grep -zvE '^\./(node_modules|\.git|bindings|dom-api-ir\.json)' \
+  | while IFS= read -r -d '' file; do
+      echo "---{$file}---"
+      cat "$file"
+    done
+
