@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+// NOW import everything else
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
-import dotenv from 'dotenv';
 
 import { logger } from './utils/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
@@ -12,9 +15,6 @@ import clusterRoutes from './routes/cluster.js';
 import nodeRoutes from './routes/nodes.js';
 import healthRoutes from './routes/health.js';
 import rollingRestartRoutes from './routes/rolling-restart.js';
-
-// Load environment variables
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -75,8 +75,8 @@ app.use('*', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   logger.info(`🚀 RabbitMQ Admin Backend running on port ${PORT}`);
-  logger.info(`📊 Health check: http://localhost:${PORT}/`);
-  logger.info(`🔌 API endpoints: http://localhost:${PORT}/api/`);
+  logger.info(`🏥 Health check: http://localhost:${PORT}/`);
+  logger.info(`🔗 API endpoints: http://localhost:${PORT}/api/`);
 });
 
 // Graceful shutdown
